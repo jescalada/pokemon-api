@@ -10,7 +10,7 @@ async function displayPokemonOnFront() {
             for (col = 0; col < 3; col++) {
                 index = row * 3 + col;
                 grid += `
-                    <div class="img-container">
+                    <div class="img-container" onclick="location.href='search.html?id=${randomPokemon[index].id}'">
                         <img src="${randomPokemon[index].sprite}" alt="${randomPokemon[index].name}" style="width:100%">
                     </div> 
                     `;
@@ -44,6 +44,7 @@ async function getRandomPokemonData() {
         let randomPokemonId = Math.ceil(Math.random() * totalNumberOfPokemon);
         let randomPokemon = await loadPokemonById(randomPokemonId);
         pokemonList[i] = {
+            id: randomPokemon['id'],
             name: randomPokemon['name'],
             sprite: randomPokemon.sprites.other['official-artwork'].front_default
         };
