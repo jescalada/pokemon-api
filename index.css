@@ -19,10 +19,14 @@ main {
 
 .img-container {
     padding: 0.5rem;
+    border-radius: 1rem;
+    border: 1px #dfdfdf solid;
+    margin: 1rem;
 }
 
-img {
-    border-radius: 5px;
+.img-container > img {
+    max-width: 360px;
+    height: auto;
 }
 
 nav a {
