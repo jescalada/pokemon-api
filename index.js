@@ -1,5 +1,27 @@
 let totalNumberOfPokemon = 900; // todo change
 
+async function displayPokemonOnFront() {
+    await getRandomPokemonData().then((randomPokemon) => {
+        let grid = `
+            <div id="grid">
+        `;
+        for (row = 0; row < 3; row++) {
+            grid += `<div class="row">`;
+            for (col = 0; col < 3; col++) {
+                index = row * 3 + col;
+                grid += `
+                    <div class="img-container">
+                        <img src="${randomPokemon[index].sprite}" alt="${randomPokemon[index].name}" style="width:100%">
+                    </div> 
+                    `;
+                }
+                grid += `</div>`;
+            }
+            grid += `</div>`;
+            $("main").append(grid);
+        }
+    );
+}
 
 function loadPokemonInfo() {
 
