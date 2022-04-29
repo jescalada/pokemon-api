@@ -19,8 +19,14 @@ async function loadPokemonByName(pokemonName) {
 }
 
 async function loadPokemonListByType(type) {
-    return await $.get(`https://pokeapi.co/api/v2/type/${type}/`, function (pokemon, status) {
-    });
+    try {
+        return await $.get(`https://pokeapi.co/api/v2/type/${type}/`, function (pokemon, status) {});
+    } catch {
+        let result = `
+            <p>Did not find any pokemon of type ${type}.</p>
+        `
+        $("#results").html(result);
+    }
 }
 
 async function loadPokemonListByAbility(ability) {
@@ -82,14 +88,44 @@ async function searchByName() {
 
 }
 
-async function searchByType() {
-    let type = $("#search-box").val().toLowerCase();
-    let resultList = await loadPokemonListByAbility(type);
+async function searchByAbility() {
+    let ability = $("#search-box").val().toLowerCase();
+    let resultList = await loadPokemonListByAbility(ability);
     let numberOfResults = resultList.pokemon.length;
     let rows = Math.ceil(numberOfResults / 3);
     let grid = `
-            <div id="grid">
-            `;
+        <div id="grid">
+        `;
+    let index = 0;
+    for (row = 0; row < rows; row++) {
+        grid += `<div class="row">`;
+        for (col = 0; col < 3; col++) {
+            if (index >= numberOfResults) {
+                break;
+            }
+            pokemonJSON = resultList.pokemon[index++].pokemon;
+            await getPokemonBasicData(pokemonJSON.name).then((pokemon) => {
+                grid += `
+                <div class="img-container" onclick="location.href='search.html?id=${pokemon.id}'">
+                    <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
+                </div>
+                `;
+            })
+        }
+        grid += `</div>`;
+    }
+    grid += `</div>`;
+    $("#results").html(grid);
+}
+
+async function searchByType() {
+    let type = $("#search-box").val().toLowerCase();
+    let resultList = await loadPokemonListByType(type);
+    let numberOfResults = resultList.pokemon.length;
+    let rows = Math.ceil(numberOfResults / 3);
+    let grid = `
+        <div id="grid">
+        `;
     let index = 0;
     for (row = 0; row < rows; row++) {
         grid += `<div class="row">`;
