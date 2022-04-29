@@ -79,3 +79,39 @@ main {
     margin: 8px;
     font-size: 1rem;
 }
+
+.pokemon-name {
+    margin: 1rem;
+    font-size: 1.5rem;
+}
+
+.pokemon-type {
+    background-color: lightblue;
+    border: #dfdfdf 1px solid;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+.pokemon-type > h2 {
+    margin: 0;
+    padding: 1rem;
+}
+
+.pokemon-stat {
+    background-color: lightblue;
+    border: #dfdfdf 1px solid;
+    margin: 0 0.5rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+}
+
+.pokemon-stat > h3 {
+    margin: 0;
+    padding: 1rem;
+}
+
+.pokemon-stat > p {
+    margin: 0;
+    padding: 1rem;
+}
