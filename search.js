@@ -40,18 +40,6 @@ async function loadPokemonListByAbility(ability) {
     }
 }
 
-// Gets query params
-function getParams() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    return {
-        id: urlParams.get('id'),
-        name: urlParams.get('name'),
-        type: urlParams.get('type'),
-        ability: urlParams.get('ability')
-    }
-}
-
 // Gets the basic data needed to display a pokemon to the client.
 async function getPokemonBasicData(name) {
     let pokemon = await loadPokemonByName(name);
