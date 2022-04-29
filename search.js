@@ -63,7 +63,7 @@ async function searchByName() {
             for (col = 0; col < 1; col++) {
                 index = 0;
                 grid += `
-            <div class="img-container" onclick="location.href='search.html?id=${pokemon.id}'">
+            <div class="img-container" onclick="location.href='pokemon.html?id=${pokemon.id}'">
                 <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
             </div> 
             `;
@@ -94,7 +94,7 @@ async function searchByAbility() {
             pokemonJSON = resultList.pokemon[index++].pokemon;
             await getPokemonBasicData(pokemonJSON.name).then((pokemon) => {
                 grid += `
-                <div class="img-container" onclick="location.href='search.html?id=${pokemon.id}'">
+                <div class="img-container" onclick="location.href='pokemon.html?id=${pokemon.id}'">
                     <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
                 </div>
                 `;
@@ -124,7 +124,7 @@ async function searchByType() {
             pokemonJSON = resultList.pokemon[index++].pokemon;
             await getPokemonBasicData(pokemonJSON.name).then((pokemon) => {
                 grid += `
-                <div class="img-container" onclick="location.href='search.html?id=${pokemon.id}'">
+                <div class="img-container" onclick="location.href='pokemon.html?id=${pokemon.id}'">
                     <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
                 </div>
                 `;

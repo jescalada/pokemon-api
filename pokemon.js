@@ -31,23 +31,47 @@ function extractPokemonData(pokemon) {
 async function displayPokemon() {
     let pokemonId = getIdFromParams();
     await loadPokemonById(pokemonId).then((pokemon) => {
-        pokemon
-        let grid = ``;
-        // for (row = 0; row < 3; row++) {
-        //     grid += `<div class="row">`;
-        //     for (col = 0; col < 3; col++) {
-        //         index = row * 3 + col;
-        //         grid += `
-        //             <div class="info-container">
-        //                 <h2> Name </h2>
-        //                 <p> ${pokemon.name} </p>
-        //             </div> 
-        //             `;
-        //         }
-        //         grid += `</div>`;
-        //     }
-        //     grid += `</div>`;
-        //     $("main").append(grid);
+        let info = `
+        <div id="info">
+            <div class="row">
+                <div class="col pokemon-name">
+                    <h1>${pokemon.name}</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col pokemon-type">
+                    <h2>Normal</h2>
+                </div>
+                <div class="col pokemon-type">
+                    <h2>Fairy</h2>
+                </div>    
+            </div>
+            <div class="row">
+                <div class="img-container">
+                    <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col pokemon-stat">
+                    <p>HP: 50</p>
+                </div>
+                
+                <div class="col pokemon-stat">
+                    <p>HP: 50</p>
+                </div>
+                
+                <div class="col pokemon-stat">
+                    <p>HP: 50</p>
+                </div>
+                
+                <div class="col pokemon-stat">
+                    <p>HP: 50</p>
+                </div>
+            </div>
+        </div>
+        `;
+        $("main").html(info);
     });
 }
 

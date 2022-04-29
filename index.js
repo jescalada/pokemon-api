@@ -10,7 +10,7 @@ async function displayPokemonOnFront() {
             for (col = 0; col < 3; col++) {
                 index = row * 3 + col;
                 grid += `
-                    <div class="img-container" onclick="location.href='search.html?id=${randomPokemon[index].id}'">
+                    <div class="img-container" onclick="location.href='pokemon.html?id=${randomPokemon[index].id}'">
                         <img src="${randomPokemon[index].sprite}" alt="${randomPokemon[index].name}" style="width:100%">
                     </div> 
                     `;
