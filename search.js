@@ -8,7 +8,6 @@ async function loadPokemonById(pokemonId) {
 async function loadPokemonByName(pokemonName) {
     try {
         const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`, function (pokemon, status, xhr) {
-
         });
         return pokemon;
     } catch {
@@ -20,17 +19,19 @@ async function loadPokemonByName(pokemonName) {
 }
 
 async function loadPokemonListByType(type) {
-    const pokemonList = await $.get(`https://pokeapi.co/api/v2/type/${type}/`, function (pokemon, status) {
-
+    return await $.get(`https://pokeapi.co/api/v2/type/${type}/`, function (pokemon, status) {
     });
-    return pokemonList;
 }
 
 async function loadPokemonListByAbility(ability) {
-    const pokemonList = await $.get(`https://pokeapi.co/api/v2/ability/${ability}/`, function (pokemon, status) {
-
-    });
-    return pokemonList;
+    try {
+        return await $.get(`https://pokeapi.co/api/v2/ability/${ability}/`, function (pokemon, status) {});
+    } catch {
+        let result = `
+            <p>Did not find any pokemon with the ability ${ability}.</p>
+        `
+        $("#results").html(result);
+    }
 }
 
 // Gets query params
