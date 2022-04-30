@@ -23,36 +23,44 @@ function extractPokemonData(pokemon) {
         id: pokemon.id,
         name: pokemon.name,
         abilities: pokemon.abilities,
+        types: pokemon.types,
         base_stats: pokemon.stats,
-        sprite: pokemon.sprites.other['official-artwork'].front_default
+        sprite: pokemon.sprites.other['official-artwork'].front_default,
     }
 }
 
 async function displayPokemon() {
     let pokemonId = getIdFromParams();
     await loadPokemonById(pokemonId).then((pokemon) => {
+        pokemon = extractPokemonData(pokemon);
         let info = `
         <div id="info">
             <div class="row">
                 <div class="col pokemon-name">
-                    <h1>${pokemon.name}</h1>
+                    <h1>${pokemon.name.toUpperCase()}</h1>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col pokemon-type">
-                    <h2>Normal</h2>
-                </div>
-                <div class="col pokemon-type">
-                    <h2>Fairy</h2>
-                </div>    
+`           
+        info += `<div class="row">`
+        pokemon.types.forEach(type => {
+            info += `
+            <div class="col pokemon-type">
+                <h2>${type.type.name.toUpperCase()}</h2>
             </div>
+            `
+        });
+        info += `</div>`
+        
+        info += `
             <div class="row">
                 <div class="img-container">
                     <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
                 </div>
-            </div>
-            <div class="row">
+            </div>`
+        
+        info += `<div class="row">
+
+    
                 <div class="col pokemon-stat">
                     <p>HP: 50</p>
                 </div>
