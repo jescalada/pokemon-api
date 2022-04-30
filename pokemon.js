@@ -1,7 +1,6 @@
 async function loadPokemonById(pokemonId) {
     try {
-        const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`, function (pokemon, status) {
-        });
+        const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`, function (pokemon, status) {});
         return pokemon;
     } catch {
         let info = `
@@ -24,7 +23,7 @@ function extractPokemonData(pokemon) {
         name: pokemon.name,
         abilities: pokemon.abilities,
         types: pokemon.types,
-        base_stats: pokemon.stats,
+        stats: pokemon.stats,
         sprite: pokemon.sprites.other['official-artwork'].front_default,
     }
 }
@@ -40,7 +39,7 @@ async function displayPokemon() {
                     <h1>${pokemon.name.toUpperCase()}</h1>
                 </div>
             </div>
-`           
+`
         info += `<div class="row">`
         pokemon.types.forEach(type => {
             info += `
@@ -50,35 +49,28 @@ async function displayPokemon() {
             `
         });
         info += `</div>`
-        
+
         info += `
             <div class="row">
                 <div class="img-container">
                     <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
                 </div>
             </div>`
-        
-        info += `<div class="row">
 
-    
-                <div class="col pokemon-stat">
-                    <p>HP: 50</p>
-                </div>
-                
-                <div class="col pokemon-stat">
-                    <p>HP: 50</p>
-                </div>
-                
-                <div class="col pokemon-stat">
-                    <p>HP: 50</p>
-                </div>
-                
-                <div class="col pokemon-stat">
-                    <p>HP: 50</p>
-                </div>
+        info += `<div class="row">`
+
+        pokemon.stats.forEach(stat => {
+            let splitName = stat.stat.name.split('-');
+            info += `
+            <div class="col pokemon-stat">
+                <p>${stat.base_stat} ${
+                    splitName.length > 1 ? splitName[0].substr(0, 2).toUpperCase() + splitName[1].substr(0, 1).toUpperCase() : splitName[0].substr(0, 3).toUpperCase()
+                }</p>
             </div>
-        </div>
-        `;
+            `;
+        });
+        
+        info += `</div>`
         $("main").html(info);
     });
 }

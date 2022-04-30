@@ -104,6 +104,8 @@ main {
     margin: 0 0.5rem;
     font-size: 1rem;
     border-radius: 0.5rem;
+    width: 6.5rem;
+    text-align: center;
 }
 
 .pokemon-stat > h3 {
