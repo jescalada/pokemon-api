@@ -20,6 +20,10 @@ main {
     justify-content: center;
 }
 
+.active {
+    background-color: rgb(144, 25, 25);
+}
+
 .img-container,
 .info-container {
     padding: 0.5rem;

@@ -81,7 +81,7 @@ async function searchByName() {
 }
 
 async function searchByAbility() {
-    let ability = $("#search-box").val().toLowerCase();
+    let ability = $("#search-box").val().toLowerCase().replace(/ /g, "-"); // If the word has spaces, replace them with dashes to match API format
     let resultList = await loadPokemonListByAbility(ability);
     let numberOfResults = resultList.pokemon.length;
     let rows = Math.ceil(numberOfResults / 3);
