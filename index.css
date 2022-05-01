@@ -1,5 +1,6 @@
 body {
     margin: 0px;
+    background-color: #fff6f6;
 }
 
 nav {
@@ -23,7 +24,8 @@ main {
 .info-container {
     padding: 0.5rem;
     border-radius: 1rem;
-    border: 1px #dfdfdf solid;
+    border: 2px #ffb7b7 solid;
+    background-color: white;
     margin: 1rem;
 }
 
@@ -39,7 +41,7 @@ nav a {
     font-size: 1.5rem;
     font-weight: bold;
 
-    color: #f2f2f2;
+    color: #ffffff;
     text-decoration: none;
 
     padding: 14px 16px;
@@ -106,7 +108,7 @@ main {
 
 .pokemon-type {
     background-color: lightblue;
-    border: #dfdfdf 1px solid;
+    border: #95b8ff 2px solid;
     margin: 0 0.5rem;
     font-size: 1rem;
     border-radius: 0.5rem;
