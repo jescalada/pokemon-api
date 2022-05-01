@@ -52,7 +52,7 @@ async function displayPokemon() {
 
         info += `
             <div class="row">
-                <div class="img-container">
+                <div class="info-container">
                     <img src="${pokemon.sprite}" alt="${pokemon.name}" style="width:100%">
                 </div>
             </div>`

@@ -33,7 +33,11 @@ main {
     margin: 1rem;
 }
 
-.img-container > img {
+.img-container:hover {
+    cursor: pointer;
+}
+
+.img-container > img, .info-container > img {
     max-width: 360px;
     height: auto;
 }
