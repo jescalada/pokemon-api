@@ -30,14 +30,16 @@
     </nav>
 
     <main>
-        <div id="search-form">
-            Search By:<br>
-            <div id="search-options">
+        <div class="row">Search By:</div>
+        <div id="search-form" class="row">
+            <div id="search-options" class="col">
                 <button onclick="searchByName()">Name</button>
                 <button onclick="searchByType()">Type</button>
                 <button onclick="searchByAbility()">Ability</button>
             </div>
-            <input id="search-box" type="text" style="margin-left: auto;" placeholder="Search...">
+        </div>
+        <div class="row">
+            <input id="search-box" type="text" placeholder="Search...">
         </div>
         <div id="results">
 
