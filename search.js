@@ -1,14 +1,18 @@
 async function loadPokemonById(pokemonId) {
-    const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`, function (pokemon, status) {
-
-    });
-    return pokemon;
+    try {
+        const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`, function (pokemon, status) {});
+        return pokemon;
+    } catch {
+        let result = `
+            <p>Pokemon #${pokemonId} does not exist!</p>
+        `
+        $("#results").html(result);
+    }
 }
 
 async function loadPokemonByName(pokemonName) {
     try {
-        const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`, function (pokemon, status, xhr) {
-        });
+        const pokemon = await $.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}/`, function (pokemon, status, xhr) {});
         return pokemon;
     } catch {
         let result = `

@@ -6,7 +6,7 @@ async function loadPokemonById(pokemonId) {
         let info = `
             <p>Pokemon #${pokemonId} does not exist!</p>
         `
-        $("#info").html(info);
+        $("main").html(info);
     }
 }
 
